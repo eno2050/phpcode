@@ -113,18 +113,14 @@ class TreeAction extends Action {
 	}
 
 
-	/**
-	当给一个无访问权限或不存在的属性赋值时，__set()魔术方法会自动调用，并传入两个参数：属性和属性值
-	$suzhou->_cityName='苏州' ---无权访问权限--> __set('_cityName','苏州');
-	**/
+	/*当给一个无访问权限或不存在的属性赋值时，__set()魔术方法会自动调用，并传入两个参数：属性和属性值
+	*/
 	public function __set($property_name,$property_value){
 		$this->$property_name = $property_value;
 	}
 	
-	/**
-	当我们调用一个权限上不允许访问的属性或者是不存在的属性时，__get()魔术方法会自动调用，并且自动传参，参数名是属性名
-	$suzhou->_cityName ---无访问权限--> __get(_cityName);
-	**/
+	/*当我们调用一个权限上不允许访问的属性或者是不存在的属性时，__get()魔术方法会自动调用，并且自动传参，参数名是属性名;
+	*/
 	public function __get($property_name){
 		if(isset($this->$property_name)){
 			return $this->$property_name;	
